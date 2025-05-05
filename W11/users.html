@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User List</title>
+</head>
+<body>
+  <h2>Registered Users</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Mobile</th><th>DOB</th><th>City</th><th>Address</th>
+      </tr>
+    </thead>
+    <tbody id="userTableBody"></tbody>
+  </table>
+
+  <script>
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const tableBody = document.getElementById("userTableBody");
+    users.forEach(user => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.mobile}</td>
+        <td>${user.dob}</td>
+        <td>${user.city}</td>
+        <td>${user.address}</td>`;
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+</html>

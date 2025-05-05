@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Employees</title>
+</head>
+<body>
+  <h2>All Employees</h2>
+  <a href="/"><button>Home</button></a>
+  <table border="1">
+    <tr>
+      <th>Name</th><th>Department</th><th>Designation</th><th>Salary</th><th>Joining Date</th><th>Actions</th>
+    </tr>
+    <% employees.forEach(emp => { %>
+      <tr>
+        <td><%= emp.name %></td>
+        <td><%= emp.department %></td>
+        <td><%= emp.designation %></td>
+        <td><%= emp.salary %></td>
+        <td><%= emp.joiningDate.toDateString() %></td>
+        <td>
+          <a href="/edit/<%= emp._id %>"><button>Edit</button></a>
+          <a href="/delete/<%= emp._id %>" onclick="return confirm('Delete?')"><button>Delete</button></a>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</body>
+</html>

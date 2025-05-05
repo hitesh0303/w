@@ -1,0 +1,13 @@
+<h2>All Books</h2>
+<table border="1">
+  <tr><th>Title</th><th>Author</th><th>Price</th><th>Genre</th></tr>
+  <% books.forEach(book => { %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.author %></td>
+      <td><%= book.price %></td>
+      <td><%= book.genre %></td>
+    </tr>
+  <% }) %>
+</table>
+<a href="/"><button>Back</button></a>

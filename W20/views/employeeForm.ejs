@@ -1,0 +1,10 @@
+<form action="/edit/<%= employee._id %>" method="POST">
+    <input name="name" value="<%= employee.name %>" required><br>
+    <input name="department" value="<%= employee.department %>" required><br>
+    <input name="designation" value="<%= employee.designation %>" required><br>
+    <input type="number" name="salary" value="<%= employee.salary %>" required><br>
+    <input type="date" name="joiningDate" value="<%= employee.joiningDate.toISOString().split('T')[0] %>" required><br>
+    <button type="submit">Update</button>
+  </form>
+  <a href="/"><button>Back</button></a>
+ 

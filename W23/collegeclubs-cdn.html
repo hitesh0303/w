@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PICT Student Clubs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- jQuery & jQuery Mobile CDN -->
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+  <style>
+    .club-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .achievement-list {
+      margin-top: 5px;
+      margin-left: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Home Page -->
+<div data-role="page" id="home">
+  <div data-role="header" data-theme="b">
+    <h1>PICT Student Clubs</h1>
+  </div>
+
+  <div data-role="content">
+    <h2>Welcome to Extracurricular Activities</h2>
+    <p>Explore various student clubs at Pune Institute of Computer Technology.</p>
+    <ul data-role="listview">
+      <li><a href="#coding">Coding Club</a></li>
+      <li><a href="#robotics">Robotics Club</a></li>
+      <li><a href="#dance">Dance Club</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- Coding Club -->
+<div data-role="page" id="coding">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Coding Club</h1>
+  </div>
+  <div data-role="content">
+    <img src="#" alt="Coding Club" class="club-image">
+    <p><strong>Description:</strong> The Coding Club promotes algorithmic thinking and software development through regular hackathons and coding sessions.</p>
+    <p><strong>Achievements:</strong></p>
+    <ul class="achievement-list">
+      <li>Winners of CodeFest 2023</li>
+      <li>Hosted 24-hour HackPICT</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Robotics Club -->
+<div data-role="page" id="robotics">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Robotics Club</h1>
+  </div>
+  <div data-role="content">
+    <img src="#" alt="Robotics Club" class="club-image">
+    <p><strong>Description:</strong> Robotics Club engages in designing and building autonomous robots for national-level competitions.</p>
+    <p><strong>Achievements:</strong></p>
+    <ul class="achievement-list">
+      <li>2nd Place at RoboWars 2023</li>
+      <li>Built a campus delivery robot</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Dance Club -->
+<div data-role="page" id="dance">
+  <div data-role="header" data-theme="b">
+    <a href="#home" data-icon="back">Back</a>
+    <h1>Dance Club</h1>
+  </div>
+  <div data-role="content">
+    <img src="#" alt="Dance Club" class="club-image">
+    <p><strong>Description:</strong> The Dance Club showcases talent in various dance forms through cultural events and intercollege fests.</p>
+    <p><strong>Achievements:</strong></p>
+    <ul class="achievement-list">
+      <li>Winners at Symbiosis Cultural Fest</li>
+      <li>Annual performance in TechnoCultural Fest</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

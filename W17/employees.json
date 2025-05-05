@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Alice Johnson",
+      "designation": "Software Engineer",
+      "department": "IT",
+      "salary": 60000,
+      "image": "https://via.placeholder.com/100"
+    },
+    {
+      "name": "Bob Smith",
+      "designation": "HR Manager",
+      "department": "HR",
+      "salary": 50000,
+      "image": "https://via.placeholder.com/100"
+    }
+  ]
+  

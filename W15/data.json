@@ -1,0 +1,27 @@
+[
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "price": "₹7,999",
+      "image": "https://via.placeholder.com/150?text=Headphones"
+    },
+    {
+      "id": 2,
+      "name": "Smartwatch",
+      "price": "₹12,999",
+      "image": "https://via.placeholder.com/150?text=Smartwatch"
+    },
+    {
+      "id": 3,
+      "name": "Gaming Mouse",
+      "price": "₹2,499",
+      "image": "https://via.placeholder.com/150?text=Gaming+Mouse"
+    },
+    {
+      "id": 4,
+      "name": "Laptop Stand",
+      "price": "₹1,999",
+      "image": "https://via.placeholder.com/150?text=Laptop+Stand"
+    }
+  ]
+  
