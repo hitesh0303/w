@@ -1,128 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product Catalog</title>
+  <meta charset="UTF-8">
+  <title>Catalog</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 10px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    img {
-      max-width: 100px;
-      height: auto;
-    }
-    .pagination {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .pagination button {
-      padding: 5px 10px;
-      margin: 0 5px;
-    }
-    @media (max-width: 600px) {
-      table, thead, tbody, th, td, tr {
-        display: block;
-      }
-      th {
-        background: #f4f4f4;
-      }
-      td {
-        border: none;
-        border-bottom: 1px solid #ddd;
-      }
+    body { font-family: sans-serif; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    img { width: 80px; }
+    .pagination { text-align: center; margin-top: 10px; }
+    @media(max-width:600px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      td { border-bottom: 1px solid #ccc; }
     }
   </style>
 </head>
 <body>
-
   <h2>Product Catalog</h2>
-  <table id="productTable">
-    <thead>
-      <tr>
-        <th>Image</th>
-        <th>Product</th>
-        <th>Price (INR ₹)</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
+  <table>
+    <thead><tr><th>Image</th><th>Product</th><th>Price</th><th>Description</th></tr></thead>
+    <tbody id="tbody"></tbody>
   </table>
-
   <div class="pagination">
-    <button onclick="prevPage()">Previous</button>
-    <span id="pageInfo">Page 1</span>
-    <button onclick="nextPage()">Next</button>
+    <button onclick="changePage(-1)">Prev</button>
+    <span id="info"></span>
+    <button onclick="changePage(1)">Next</button>
   </div>
 
   <script>
-    const products = [
-      { name: "Wireless Headphones", image: "#", price: 7999, desc: "Noise-cancelling over ear headphones." },
-      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracking smartwatch." },
-      { name: "Gaming Mouse", image: "#", price: 2499, desc: "Ergonomic gaming mouse." },
-      { name: "Laptop Stand", image: "#", price: 1999, desc: "Adjustable aluminium stand." },
-      { name: "Bluetooth Speaker", image: "#", price: 2999, desc: "Portable wireless speaker." },
-      { name: "Webcam", image: "#", price: 3499, desc: "HD video webcam for conferencing." },
-      { name: "Keyboard", image: "#", price: 1899, desc: "Mechanical RGB keyboard." },
-      { name: "Monitor", image: "#", price: 15999, desc: "24-inch Full HD monitor." },
-      { name: "Router", image: "#", price: 2999, desc: "High-speed dual band router." },
-      { name: "USB Hub", image: "#", price: 999, desc: "4-port USB 3.0 hub." },
-      { name: "External SSD", image: "#", price: 5999, desc: "500GB portable SSD." }
+    const data = [
+      { name: "Headphones", image: "#", price: 7999, desc: "Noise-cancelling." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Smartwatch", image: "#", price: 12999, desc: "Fitness tracker." },
+      { name: "Keyboard", image: "#", price: 1999, desc: "Mechanical keyboard." },
+      { name: "Mouse", image: "#", price: 2499, desc: "Gaming mouse." }
     ];
+    let page = 1, perPage = 10;
 
-    const rowsPerPage = 10;
-    let currentPage = 1;
-    const totalPages = Math.ceil(products.length / rowsPerPage);
-
-    function displayProducts() {
-      const tbody = document.querySelector("#productTable tbody");
+    function render() {
+      let tbody = document.getElementById("tbody");
       tbody.innerHTML = "";
-
-      const start = (currentPage - 1) * rowsPerPage;
-      const end = start + rowsPerPage;
-      const currentItems = products.slice(start, end);
-
-      currentItems.forEach(p => {
-        const row = `
-          <tr>
-            <td><img src="${p.image}" alt="${p.name}"></td>
-            <td>${p.name}</td>
-            <td>₹${p.price}</td>
-            <td>${p.desc}</td>
-          </tr>
-        `;
-        tbody.insertAdjacentHTML("beforeend", row);
+      data.slice((page-1)*perPage, page*perPage).forEach(p => {
+        tbody.innerHTML += `<tr><td><img src="${p.image}" alt="${p.image}"></td><td>${p.name}</td><td>₹${p.price}</td><td>${p.desc}</td></tr>`;
       });
-
-      document.getElementById("pageInfo").innerText = `Page ${currentPage} of ${totalPages}`;
+      info.innerText = `Page ${page} of ${Math.ceil(data.length/perPage)}`;
     }
 
-    function prevPage() {
-      if (currentPage > 1) {
-        currentPage--;
-        displayProducts();
-      }
+    function changePage(n) {
+      const total = Math.ceil(data.length / perPage);
+      page = Math.min(Math.max(1, page + n), total);
+      render();
     }
 
-    function nextPage() {
-      if (currentPage < totalPages) {
-        currentPage++;
-        displayProducts();
-      }
-    }
-
-    displayProducts();
+    render();
   </script>
 </body>
 </html>
